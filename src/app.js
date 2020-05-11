@@ -94,7 +94,8 @@ App({
       .then(res => {
         if (res.statusCode === 200 && res.data.count > 0) {
           const data = res.data.pois[0];
-          const address = AddressModel.convertAmapResonse(data);
+          // const address = AddressModel.convertAmapResonse(data);
+          const address = data;
           setLocalStorageSync('location', address);
           return address;
         }
