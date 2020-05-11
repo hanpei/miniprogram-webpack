@@ -1,0 +1,24 @@
+.menu-container {
+  background: #fff;
+  height: 80rpx;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .item {
+    flex: 1;
+    text-align: center;
+    &.current {
+      line-height: 52rpx;
+      text {
+        color: #ef0214;
+        border-bottom: 4rpx solid #ef0214;
+        padding: 10rpx 0;
+      }
+    }
+  }
+}

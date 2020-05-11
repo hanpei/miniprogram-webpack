@@ -1,0 +1,40 @@
+.movable-delete-container {
+  display: flex;
+  width: 100%;
+}
+
+.movalbe-touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+.movable-content {
+  width: 100%;
+  line-height: 22px;
+  margin-right: 0;
+  transition: all 0.4s;
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+.movable-del {
+  background-color: #ffb403;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transform: translateX(90px);
+  transition: all 0.4s;
+  font-size: 28rpx;
+}
+.movable-del .iconfont {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+.movalbe-touch-move-active .movable-content,
+.movalbe-touch-move-active .movable-del {
+  transform: translateX(0);
+}

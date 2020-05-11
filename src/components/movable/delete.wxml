@@ -1,0 +1,15 @@
+<view class="movable-delete-container">
+  <view
+    class="movalbe-touch-item {{isTouchMove ? 'movalbe-touch-move-active' : ''}}"
+    bindtouchstart="touchstart"
+    bindtouchmove="touchmove"
+  >
+    <view class="movable-content">
+      <slot></slot>
+    </view>
+    <view class="movable-del" catchtap="handledel" data-index="{{itemIndex}}" data-id="{{itemId}}">
+      <view class="iconfont iconshanchu"></view>
+      删除
+    </view>
+  </view>
+</view>

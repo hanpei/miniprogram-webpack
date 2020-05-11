@@ -1,0 +1,8 @@
+<view class="dialog {{ visible ? 'dialog-show' : '' }}  ">
+  <view class="dialog-mask" bindtap="toggleDialog" />
+  <view class="dialog-container">
+    <view class="content">
+      <slot></slot>
+    </view>
+  </view>
+</view>

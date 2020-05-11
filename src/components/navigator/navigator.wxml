@@ -1,0 +1,27 @@
+<view class="header-title {{visible ? 'active' : ''}}">
+  <view
+    class="{{visible ? 'status-bar' : ''}}"
+    style="height:{{statusBarHeight}}px"
+  ></view>
+  <view class="title-bar" style="height:{{titleBarHeight}}px">
+    <view class="left-icon">
+      <navigator
+        class="{{visible ? 'actives' : 'navigator'}}"
+        open-type="navigateBack"
+        wx:if="{{!isShowHome}}"
+      />
+      <navigator
+        class="{{visible ? 'homeIndex' : 'homePage'}}"
+        open-type="redirect"
+        url="/pages/index/index"
+        wx:else
+      />
+    </view>
+    <view class="title {{visible ? 'active' : ''}}">{{title}}</view>
+    <view class="right-icon"></view>
+  </view>
+</view>
+<view
+  style="height:{{statusBarHeight + titleBarHeight}}px"
+  wx:if="{{showPadding}}"
+></view>

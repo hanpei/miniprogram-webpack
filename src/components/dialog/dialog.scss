@@ -1,0 +1,53 @@
+.dialog {
+  .dialog-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+  }
+
+  .dialog-container {
+    position: fixed;
+    bottom: 0;
+    width: 750rpx;
+    background: white;
+    transform: translateY(150%);
+    transition: all 0.4s ease;
+    z-index: 11;
+  }
+
+  &.dialog-show {
+    .dialog-container {
+      transform: translateY(0);
+    }
+    .dialog-mask {
+      display: block;
+    }
+  }
+
+  .content {
+    box-sizing: border-box;
+    min-height: 300rpx;
+    width: 100%;
+    position: relative;
+
+    .ico-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .header {
+      font-weight: normal;
+      padding: 15px 20px;
+      border-bottom: 1px solid #f1f1f1;
+      box-sizing: border-box;
+      height: 80px;
+    }
+  }
+}
+

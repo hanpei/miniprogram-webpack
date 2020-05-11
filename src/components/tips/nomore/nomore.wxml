@@ -1,0 +1,3 @@
+<view class="no-more-tips" wx:if="{{visible}}">
+  <text><slot></slot></text>
+</view>

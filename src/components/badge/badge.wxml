@@ -1,0 +1,3 @@
+<cover-view class="weui-badge {{extClass}} {{!content ? 'weui-badge_dot' : ''}}">
+  {{content}}
+</cover-view>

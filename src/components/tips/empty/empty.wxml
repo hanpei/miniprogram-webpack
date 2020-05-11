@@ -1,0 +1,42 @@
+<view class="empty-container" wx:if="{{type === 'cart'}}">
+  <image
+    src="https://gemini-wlcb.oss-cn-beijing.aliyuncs.com/pad/hctag138rez3ssjkoekeximftmyyro4w.png"
+    class="empty-icon"
+  ></image>
+  <view class="content">购物车里空空的</view>
+  <view class="btn" bindtap="toPageHome">速去剁手</view>
+</view>
+
+<view class="empty-container" wx:if="{{type === 'orderList'}}">
+  <image
+    src="https://gemini-wlcb.oss-cn-beijing.aliyuncs.com/pad/lsqqgst66l49763yav53lbn2t1ooly67.png"
+    class="empty-icon"
+  ></image>
+  <view class="content">传说订单多的人最幸福</view>
+</view>
+
+<view class="empty-container" wx:if="{{type === 'product'}}">
+  <image
+    class="empty-icon"
+    src="https://gemini-wlcb.oss-cn-beijing.aliyuncs.com/pad/c1ujcs1swnjitslh9wi87fu1s42nw8bv.png"
+  ></image>
+  <view class="content">没有找到相关商品</view>
+</view>
+<view class="empty-container" wx:if="{{type === 'coupon'}}">
+  <image
+    class="empty-icon"
+    mode="aspectFit"
+    src="https://gemini-wlcb.oss-cn-beijing.aliyuncs.com/pad/e9bpbjcb4zfrld6nyrufv3xx7nd3dle7.png "
+  ></image>
+  <view class="content">暂无优惠券</view>
+</view>
+
+<view class="empty-container" wx:if="{{type === 'default'}}">
+  <image
+    class="empty-icon"
+    src="https://gemini-wlcb.oss-cn-beijing.aliyuncs.com/pad/c1ujcs1swnjitslh9wi87fu1s42nw8bv.png"
+  ></image>
+  <view class="content">
+    <slot></slot>
+  </view>
+</view>

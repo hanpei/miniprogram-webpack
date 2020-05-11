@@ -1,0 +1,26 @@
+<!--miniprogram/custom-tab-bar/index.wxml-->
+<cover-view class="tab-bar">
+  <cover-view class="tab-bar-border"></cover-view>
+  <cover-view
+    wx:for="{{list}}"
+    wx:key="index"
+    class="tab-bar-item"
+    data-path="{{item.pagePath}}"
+    data-index="{{index}}"
+    bindtap="tabChange"
+    style="position: relative"
+  >
+    <cover-image
+      src="{{selected === index ? item.selectedIconPath : item.iconPath}}"
+    ></cover-image>
+    <badge
+      wx:if="{{item.badge}}"
+      content="{{item.badge}}"
+      style="position: absolute;top:2px;left:calc(50% + 12px)"
+    ></badge>
+
+    <cover-view style="color: {{selected === index ? selectedColor : color}}">
+      {{item.text}}
+    </cover-view>
+  </cover-view>
+</cover-view>

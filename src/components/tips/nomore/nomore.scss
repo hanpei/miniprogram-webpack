@@ -1,0 +1,24 @@
+.no-more-tips {
+  padding: 20rpx 0;
+  height: 80rpx;
+  text-align: center;
+
+  text {
+    display: table;
+    width: 100%;
+    line-height: 60rpx;
+    white-space: nowrap;
+    border-spacing: 2rem 0;
+    font-size: 24rpx;
+    color: #999;
+
+    &::before,
+    &::after {
+      display: table-cell;
+      content: "";
+      width: 50%;
+      background: linear-gradient(#efefef, #efefef) repeat-x center;
+      background-size: 0.1rem 0.1rem;
+    }
+  }
+}
