@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "bin": {
+    "deploy-cli": "./deploy.js"
+  },
   "scripts": {
     "start": "webpack --watch --progress",
-    "build": "cross-env NODE_ENV=production BUILD_TYPE=release webpack",
+    "dev": "cross-env NODE_ENV=development DIST_ENV=test webpack --watch --progress",
+    "dev:prod": "cross-env NODE_ENV=development DIST_ENV=production webpack --watch --progress",
+    "build": "cross-env NODE_ENV=production DIST_ENV=production webpack",
+    "build:production": "cross-env NODE_ENV=production DIST_ENV=production webpack",
+    "build:test": "cross-env NODE_ENV=production DIST_ENV=test webpack",
+    "deploy": "node deploy.js publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,18 +22,32 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.0.3",
+    "commander": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^5.2.0",
     "ensure-posix-path": "^1.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^4.0.0",
-    "node-sass": "^4.12.0",
+    "happypack": "^5.0.1",
+    "inquirer": "^6.5.1",
+    "node-sass": "^4.14.1",
+    "ora": "^3.4.0",
     "replace-ext": "^1.0.0",
     "required-path": "^1.0.1",
     "sass-loader": "^7.1.0",
+    "shelljs": "^0.8.3",
     "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4"
+    "webpack-cli": "^3.3.11"
   }
 }
