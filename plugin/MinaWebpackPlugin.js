@@ -9,13 +9,13 @@ const replaceExt = require('replace-ext');
 const assetsChunkName = '__assets_chunk_name__';
 
 class MinaWebpackPlugin {
-  constructor(options = {}) {
+  constructor (options = {}) {
     this.scriptExtensions = options.scriptExtensions || ['.ts', '.js'];
     this.assetExtensions = options.assetExtensions || [];
     this.entries = [];
   }
 
-  applyEntry(compiler, done) {
+  applyEntry (compiler, done) {
     const { context } = compiler.options;
     this.entries
       .map(item => first(item, this.scriptExtensions))
@@ -38,7 +38,7 @@ class MinaWebpackPlugin {
     }
   }
 
-  apply(compiler) {
+  apply (compiler) {
     const { context, entry } = compiler.options;
 
     inflateEntries(this.entries, context, entry);
@@ -69,14 +69,14 @@ class MinaWebpackPlugin {
   }
 }
 
-function itemToPlugin(context, entry, name) {
+function itemToPlugin (context, entry, name) {
   if (Array.isArray(entry)) {
     return new MultiEntryPlugin(context, entry, name);
   }
   return new SingleEntryPlugin(context, entry, name);
 }
 
-function inflateEntries(entries = [], dirname, entry) {
+function inflateEntries (entries = [], dirname, entry) {
   entry = path.resolve(dirname, entry);
   if (entry !== null && !entries.includes(entry)) {
     entries.push(entry);
@@ -84,10 +84,11 @@ function inflateEntries(entries = [], dirname, entry) {
   }
 }
 
-function _inflateEntries(entries = [], dirname, entry) {
+function _inflateEntries (entries = [], dirname, entry) {
   const configFile = replaceExt(entry, '.json');
   const content = fs.readFileSync(configFile, 'utf8');
   const config = JSON.parse(content);
+  console.log('====', configFile);
 
   ['pages', 'usingComponents'].forEach(key => {
     const items = config[key];
@@ -99,7 +100,7 @@ function _inflateEntries(entries = [], dirname, entry) {
   });
 }
 
-function first(entry, extensions) {
+function first (entry, extensions) {
   for (const ext of extensions) {
     const file = replaceExt(entry, ext);
     if (fs.existsSync(file)) {
@@ -109,7 +110,7 @@ function first(entry, extensions) {
   return null;
 }
 
-function all(entry, extensions) {
+function all (entry, extensions) {
   const items = [];
   for (const ext of extensions) {
     const file = replaceExt(entry, ext);

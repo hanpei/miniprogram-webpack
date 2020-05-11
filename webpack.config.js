@@ -2,11 +2,12 @@ const webpack = require('webpack');
 const { resolve } = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HappyPack = require('happypack');
 
 const MinaWebpackPlugin = require('./plugin/MinaWebpackPlugin');
 const MinaRuntimePlugin = require('./plugin/MinaRuntimePlugin');
 
-const isDebug = process.env.BUILD_TYPE !== 'release';
+const isDebug = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   context: resolve('src'),
@@ -36,7 +37,12 @@ module.exports = {
     // 配置多环境
     new webpack.EnvironmentPlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development',
-      BUILD_TYPE: JSON.stringify(process.env.BUILD_TYPE) || 'debug',
+      DIST_ENV: JSON.stringify(process.env.DIST_ENV) || 'test',
+    }),
+    new HappyPack({
+      loaders: ['babel-loader?cacheDirectory'],
+      threadPool: HappyPack.ThreadPool({ size: require('os').cpus().length }),
+      verbose: true,
     }),
   ],
   module: {
@@ -44,7 +50,9 @@ module.exports = {
       // babel处理js
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: 'happypack/loader',
+        include: /src/,
+        exclude: /node_modules/,
       },
       // sass支持
       {
@@ -79,7 +87,17 @@ module.exports = {
       minChunks: 2,
       minSize: 0,
     },
+    concatenateModules: true,
+  },
+  resolve: {
+    alias: {
+      '@common': resolve(__dirname, 'src/common'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@assets': resolve(__dirname, 'src/assets'),
+    },
   },
   mode: isDebug ? 'none' : 'production',
   devtool: isDebug ? 'inline-source-map' : 'source-map',
+  cache: true,
 };
