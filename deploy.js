@@ -60,7 +60,7 @@ function build(env) {
             console.log(stderr);
             reject(stderr);
           }
-        }
+        },
       );
     });
   };
@@ -103,7 +103,7 @@ function publish(version, message, env) {
             console.log(stderr);
             reject(stderr);
           }
-        }
+        },
       );
     });
   };
