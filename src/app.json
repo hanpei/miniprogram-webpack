@@ -9,5 +9,10 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序获取您所在位置"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }
