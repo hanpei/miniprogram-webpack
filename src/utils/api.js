@@ -3,12 +3,7 @@ import config from './config';
 
 import { paramObjToString } from '@utils/formatGetParams';
 
-const { apiDomain, amapKey, apiAppid } = config;
-
-const protocol = 'https:';
-
-const phpApiPrefix = `${protocol}//wxapi.${apiDomain}`;
-const javaApiPrefix = `${protocol}//gasq-web-api.${apiDomain}`;
+const { amapKey } = config;
 
 const api = {
   // 根据经纬度获取地址

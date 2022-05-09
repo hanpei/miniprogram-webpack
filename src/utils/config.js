@@ -4,7 +4,6 @@
 // const env = process.env.NODE_ENV;
 const isDebug = process.env.DIST_ENV !== 'production';
 
-// const DEVELOPMENT_DOMAIN = 'guoanshequ.top'; // 开发/预生产环境
 const DEVELOPMENT_DOMAIN = 'endpoint.test'; // 开发/预生产环境
 const PRODUCTION_DOMAIN = 'endpoint.production'; // 生产环境
 
