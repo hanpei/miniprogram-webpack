@@ -60,7 +60,7 @@ function build(env) {
             console.log(stderr);
             reject(stderr);
           }
-        },
+        }
       );
     });
   };
@@ -90,7 +90,9 @@ function publish(version, message, env) {
 
     return new Promise((resolve, reject) => {
       shell.exec(
-        `/Applications/wechatwebdevtools.app/Contents/MacOS/cli -u ${version}@${__dirname} --upload-desc '${message}' --upload-info-output ${__dirname}/info.json`,
+        // `/Applications/wechatwebdevtools.app/Contents/MacOS/cli -u ${version}@${__dirname} --upload-desc '${message}' --upload-info-output ${__dirname}/info.json`,
+        `/Applications/wechatwebdevtools.app/Contents/MacOS/cli upload --project ${__dirname} --version ${version} --desc '${message}' --info-output ${__dirname}/info.json`,
+
         { silent: false },
         async (code, stdout, stderr) => {
           if (code === 0) {
@@ -103,7 +105,7 @@ function publish(version, message, env) {
             console.log(stderr);
             reject(stderr);
           }
-        },
+        }
       );
     });
   };
