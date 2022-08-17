@@ -220,6 +220,9 @@ function compareVerSimple(a, b) {
   let i = 0;
 
   while (i < len) {
+    if (m[i] && n[i] === undefined) {
+      return 1;
+    }
     if (m[i] > n[i]) {
       return 1;
     }
